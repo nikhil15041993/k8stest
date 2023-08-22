@@ -13,8 +13,6 @@ spec:
   type: NodePort
 
 
-
-
 ---
 apiVersion: apps/v1
 kind : Deployment
