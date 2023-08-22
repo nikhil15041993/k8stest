@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/nikhil15041993/k8stest.gitx
+    repoURL: https://github.com/nikhil15041993/k8stest.git
     targetRevision: HEAD
     path: dev
   destination: 
