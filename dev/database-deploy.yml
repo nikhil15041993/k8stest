@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: database-techibens
+spec:
+  selector:
+    app: database-techibens
+  ports:
+  - protocol: "TCP"
+    port: 5432
+    targetPort: 5432
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database
+  labels:
+    app: database-techibens
+
+
+spec:
+  strategy:
+    type: Recreate
+  
+  selector:
+    matchLabels:
+      app: database-techibens
+
+
+  template:
+    metadata:
+      labels:
+        app: database-techibens
+    spec:
+      containers:
+      - image: postgres:latest
+        name: database-techibens 
+        env:
+        - name: POSTGRES_USER
+          value: test
+        - name: POSTGRES_PASSWORD
+          value: test
+        - name: POSTGRES_DB
+          value: test
+        ports:
+        - containerPort: 5432        
+         
+        volumeMounts:
+        - name: postgres-persistent-storage
+          mountPath: /var/lib/postgresql/data
+       
+
+
+
+      volumes:
+        - name: postgres-persistent-storage
+          persistentVolumeClaim:
+            claimName: postgres-pv-claim        
+
+
