@@ -1,0 +1,43 @@
+version: '3.3'
+services:
+  flask-application1:
+    container_name: techibeans1
+    build:
+      context: .
+      dockerfile: Dockerfile
+      #   env_file:
+           #- env.list
+    
+    environment:
+      - DATABASE_URL=postgresql+psycopg2://test:test@postgresql/test 
+    restart: always
+    
+    depends_on:
+      - postgresql
+    
+    ports:
+      - 5000:5000  
+
+
+
+  postgresql:
+    container_name: postgresql
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=test
+
+    ports:
+      - '5432:5432'
+    volumes: 
+      - db7:/var/lib/postgresql/data
+
+    tty: true
+      
+
+volumes:
+  db7:
+    driver: local               
+  
