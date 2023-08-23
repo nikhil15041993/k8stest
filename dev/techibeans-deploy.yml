@@ -42,7 +42,7 @@ spec:
 
     spec:
       containers:
-      - image: nikhilnambiars/techibeans:94
+      - image: 442357423419.dkr.ecr.ap-south-1.amazonaws.com/techibeans:11
         name: techibeans
         env: 
           - name: DATABASE_URL
