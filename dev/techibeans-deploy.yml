@@ -42,7 +42,7 @@ spec:
 
     spec:
       containers:
-      - image: nikhilnambiars/techibeans:91
+      - image: nikhilnambiars/techibeans:93
         name: techibeans
         env: 
           - name: DATABASE_URL
