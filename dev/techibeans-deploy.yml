@@ -43,6 +43,8 @@ spec:
     spec:
       containers:
       - image: 442357423419.dkr.ecr.ap-south-1.amazonaws.com/techibeans:11
+      imagePullSecrets:
+        - name: regcred
         name: techibeans
         env: 
           - name: DATABASE_URL
